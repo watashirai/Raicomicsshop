@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2024 at 06:04 PM
+-- Generation Time: Jul 13, 2024 at 07:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,6 +41,34 @@ CREATE TABLE `books` (
   `Solds` int(11) NOT NULL,
   `Quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`BookID`, `Title`, `Author`, `Publisher`, `Genre`, `BookImage`, `Forsale`, `Price`, `Solds`, `Quantity`) VALUES
+(23, 'Kimetsu no yaiba', 'Koyoharu Gotouge', 'Shueisha', 'Manga', 'upload/books/kimetsu.png', 1, 550.00, 0, 10),
+(24, 'Blue Lock', 'Muneyuki Kaneshiro', 'Kodansha', 'Manga', 'upload/books/bluelock.png', 1, 450.00, 0, 10),
+(25, 'alya sometimes hides her feelings in russian', 'SunSunSun', 'Yen Press', 'Manga', 'upload/books/alya.png', 1, 450.00, 0, 10),
+(26, 'Yazakura Family', 'Hitsuji Gondaira', 'Shueisha', 'Manga', 'upload/books/yozakura.png', 1, 350.00, 0, 10),
+(27, 'Shied Hero', 'Aneko Yusagi', 'Media Factory', 'Manga', 'upload/books/tatenoyush.png', 1, 350.00, 0, 10),
+(28, '5 toubun no hanayome', 'Negi Haruba', 'Kodansha', 'Manga', 'upload/books/gotoubun.png', 1, 450.00, 0, 10),
+(29, 'Is It Wrong to Try to Pick Up Girls in a Dungeon?', 'Fujino Omori', 'SB Creative', 'Manga', 'upload/books/danmachi.png', 1, 450.00, 7, 3),
+(30, 'Oshi no ko', 'Aka Akasaka', 'Mengo Yokoyari', 'Manga', 'upload/books/oshi no ko.png', 1, 450.00, 0, 10),
+(31, 'she is also cute today', 'Guo Si Te', 'KuaiKan Manhua.', 'Webcomics', 'upload/books/she cute.png', 1, 1000.00, 0, 10),
+(32, 'When the Dragon King Falls for the Loli Alchemist', '', '', 'Webcomics', 'upload/books/image_2024-07-14_003543487.png', 1, 550.00, 0, 10),
+(33, 'Little Wife', 'Darby Kane', '', 'Webcomics', 'upload/books/wife.png', 1, 450.00, 0, 10),
+(34, 'I Married My Father-in-law ', 'Plumage', 'PXTA R Star Studio', 'Webcomics', 'upload/books/image_2024-07-14_004208612.png', 1, 450.00, 0, 10),
+(35, 'odds are in my favor', '', '', 'Webcomics', 'upload/books/add.png', 1, 450.00, 0, 10),
+(36, 'Wicked Kings Favour', 'Holly Black', 'AC QQ', 'Webcomics', 'upload/books/we.png', 1, 550.00, 0, 10),
+(37, 'X men', 'Stan lee', 'Marvel Comics', 'Comics', 'upload/books/exmen.png', 1, 500.00, 0, 10),
+(38, 'Spider Man', 'Stan lee', 'Marvel Comics', 'Comics', 'upload/books/spider.png', 1, 500.00, 0, 10),
+(39, 'Superman', 'Jerry Siegel and artist Joe Shuster', 'DC Comics', 'Comics', 'upload/books/super.png', 1, 500.00, 0, 10),
+(40, 'Batman', 'Jerry Siegel and artist Joe Shuster', 'Dc Comics', 'Comics', 'upload/books/batman.png', 1, 500.00, 0, 10),
+(41, 'Justice Leage', 'Jerry Siegel and artist Joe Shuster', 'DC Comics', 'Comics', 'upload/books/justleag.png', 1, 500.00, 0, 10),
+(42, 'Iron Man', 'Stan lee', 'Marvel Comics', 'Comics', 'upload/books/ironman.png', 1, 500.00, 0, 10),
+(43, 'The Incredible Hulk', 'Stan lee', 'Marvel Comics', 'Comics', 'upload/books/hulk.png', 1, 500.00, 0, 10),
+(44, 'Black Widow', 'Stan lee', 'Marvel Comics', 'Comics', 'upload/books/blackwid.png', 1, 500.00, 0, 10);
 
 -- --------------------------------------------------------
 
@@ -95,7 +123,7 @@ CREATE TABLE `currentuser` (
 --
 
 INSERT INTO `currentuser` (`UserId`, `FName`, `LName`, `username`, `email`, `address`, `phone`, `profile`) VALUES
-(1, 'Lance', 'Musngi', 'lance', 'lance.musngi@gmail.com', '', '', 'upload/currentuser/new.png');
+(1, 'Rai', 'book shop', 'admin', 'lance.musngi@gmail.com', '300 sampaguita st.', '09911180759', 'upload/currentuser/rai.jpg');
 
 -- --------------------------------------------------------
 
@@ -134,6 +162,13 @@ CREATE TABLE `orders` (
   `total_amount` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `customer_id`, `product_id`, `order_date`, `order_quantity`, `total_amount`) VALUES
+(113, 1, '29', '2024-07-13 17:10:15', 7, 3150.00);
+
 -- --------------------------------------------------------
 
 --
@@ -171,6 +206,13 @@ CREATE TABLE `payment` (
   `amount_paid` decimal(10,2) NOT NULL,
   `payment_mode` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payment_id`, `order_id`, `customer_id`, `payment_date`, `amount_paid`, `payment_mode`) VALUES
+(435368, 113, 1, '2024-07-13 17:10:15', 3150.00, 'paypal');
 
 -- --------------------------------------------------------
 
@@ -227,7 +269,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `FName`, `LName`, `username`, `password`, `email`, `phone`, `address`, `attempt`, `block`, `admin`, `profile`, `verification`, `verification_code`) VALUES
-(1, 'Rai', 'book shop', 'admin', '$2y$10$n6M7sVBsd.d0pea504SDgecSM0dimSJdKsEiXCkY8IQ1yVwVLNyJ6', 'lance.musngi@gmail.com', '09911180759', '300 sampaguita st.', 0, 0, 1, 'upload/currentuser/online-comic.png', '1', '45927'),
+(1, 'Rai', 'book shop', 'admin', 'admin', 'lance.musngi@gmail.com', '09911180759', '300 sampaguita st.', 0, 0, 1, 'upload/currentuser/rai.jpg', '1', '45927'),
 (12, 'Lance', 'Musngi', 'lance', '$2y$10$n6M7sVBsd.d0pea504SDgecSM0dimSJdKsEiXCkY8IQ1yVwVLNyJ6', 'lance.musngi@gmail.com', NULL, NULL, 0, 0, 0, 'upload/currentuser/new.png', '1', '45927');
 
 --
@@ -307,7 +349,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `BookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `borrow`
@@ -319,7 +361,7 @@ ALTER TABLE `borrow`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `currentuser`
@@ -337,7 +379,7 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
 -- AUTO_INCREMENT for table `page`
@@ -349,7 +391,7 @@ ALTER TABLE `page`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=435368;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=435369;
 
 --
 -- AUTO_INCREMENT for table `slideshow`

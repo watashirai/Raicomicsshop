@@ -16,18 +16,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $tmp_name = $_FILES['bookImage']['tmp_name'];
         $location = "upload/books/$name";
         if (move_uploaded_file($tmp_name, $location)) {
-            $bookImage = $location;  // Update $bookImage with the new file path
+            $bookImage = $location;
         } else {
             echo "Error uploading file.";
             exit;
         }
     } else {
-        $bookImage = "default_image_path.jpg"; 
+        $bookImage = "default_image_path.jpg";
     }
 
     $query = "INSERT INTO books (Title, Author, Publisher, Genre, BookImage, Forsale, Price, Quantity) 
               VALUES ('$title', '$author', '$publisher', '$genre', '$bookImage', '$forSale', '$price', '$quantity')";
-
+    echo "$query";
     if (mysqli_query($con, $query)) {
         echo '<script>alert("Book Created successfully!");</script>';
         echo "<script>window.location.href = 'admin.php#inventory';</script>";
@@ -36,4 +36,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $query . "<br>" . mysqli_error($con);
     }
 }
-?>
