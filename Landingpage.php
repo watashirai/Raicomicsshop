@@ -21,7 +21,7 @@
             color: $color;
         }
         .fade-overlay {
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), $backgroundcolor);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), $backgroundcolor 30%);
     </style>";
     ?>
 </head>
@@ -49,20 +49,7 @@
                     blossoms.</p>
                 <br><br><br>
             </div>
-            <div class="slideshow-container">
-                <button class="prev-button" onclick="plusSlides(-1)"></button>
-                <div class="slides-container">
-                    <?php
-                    $query = mysqli_query($con, "select * from slideshow");
-                    while ($row = mysqli_fetch_assoc($query)) {
-                        $location = $row["imagelocation"];
-                        echo "<div class='slide'><img class='slideimg' src='$location'></div>";
-                    }
-                    ?>
-                </div>
-                <button class="next-button" onclick="plusSlides(1)"></button>
-                <div class="dot-container"></div>
-            </div>
+
         </div>
     </section>
     <section><a name="Books"></a>
