@@ -7,9 +7,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:\xampp\htdocs\Finals\PHPMailer\src\Exception.php';
-require 'C:\xampp\htdocs\Finals\PHPMailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\Finals\PHPMailer\src\SMTP.php';
+require 'C:\xampp\htdocs\Raicomicsshop\PHPMailer\src\Exception.php';
+require 'C:\xampp\htdocs\Raicomicsshop\PHPMailer\src\PHPMailer.php';
+require 'C:\xampp\htdocs\Raicomicsshop\PHPMailer\src\SMTP.php';
 
 $mail = new PHPMailer(true);
 
@@ -30,7 +30,7 @@ if ($result->num_rows > 0) { // Fix: use > 0 instead of > 1
         $mail->setFrom("$resetemail", 'The Book Haven');
         $mail->addAddress("$resetemail", '');
 
-        $reset_link = "http://localhost/finals/resetpassword.php?email=$resetemail";
+        $reset_link = "http://localhost/Raicomicsshop/resetpassword.php?email=$resetemail";
         $message = '
         <html>
         <body>

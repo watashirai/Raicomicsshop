@@ -7,9 +7,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:\xampp\htdocs\Finals\PHPMailer\src\Exception.php';
-require 'C:\xampp\htdocs\Finals\PHPMailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\Finals\PHPMailer\src\SMTP.php';
+require 'C:\xampp\htdocs\Raicomicsshop\PHPMailer\src\Exception.php';
+require 'C:\xampp\htdocs\Raicomicsshop\PHPMailer\src\PHPMailer.php';
+require 'C:\xampp\htdocs\Raicomicsshop\PHPMailer\src\SMTP.php';
 
 $mail = new PHPMailer(true);
 
@@ -32,7 +32,7 @@ try {
     $sql = "UPDATE users SET verification_code = '$verificationCode' WHERE email = '$email'";
     mysqli_query($con, $sql);
     // Include the verification code in the link
-    $verificationLink = "http://localhost/Finals//verify.php?code=$verificationCode";
+    $verificationLink = "http://localhost/Raicomicsshop/verify.php?code=$verificationCode";
 
     // Set the email content
     $mail->isHTML(true);
