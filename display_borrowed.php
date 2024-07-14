@@ -13,7 +13,7 @@ $result = mysqli_query($con, $selectQuery);
 <html>
 
 <head>
-    <title>The Book Haven</title>
+    <title>Rai's Book Shop</title>
     <link rel="stylesheet" href="css/stylemain.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/borrow2.css">
@@ -73,7 +73,7 @@ $result = mysqli_query($con, $selectQuery);
                     <th>Return Date</th>
                     <th>Action</th>
                 </tr>
-                <?php while ($book = mysqli_fetch_assoc($result)): ?>
+                <?php while ($book = mysqli_fetch_assoc($result)) : ?>
                     <tr id='book_row_<?= $book['BookID'] ?>' class='<?= $book['returned'] ? 'returned-book' : '' ?>'>
                         <td>
                             <?= $book['BookID'] ?>
@@ -89,13 +89,13 @@ $result = mysqli_query($con, $selectQuery);
                             <?= $book['due_date'] ?>
                         </td>
                         <td style="max-width: 40px;">
-                            <?php if ($book['returned'] == 1): ?>
+                            <?php if ($book['returned'] == 1) : ?>
                                 Returned
                                 <form method='post' action='remove_book.php' style="margin-top: 5px;">
                                     <input type='hidden' name='BookID' value='<?= $book['BookID'] ?>'>
                                     <button type='submit' class='remove-button' name='remove_book'>Remove</button>
                                 </form>
-                            <?php elseif (strtotime($book['due_date']) < time()): ?>
+                            <?php elseif (strtotime($book['due_date']) < time()) : ?>
                                 <form class='penalty-form' id='payForm_<?= $book['BookID'] ?>'>
                                     <input type='hidden' name='BookID' value='<?= $book['BookID'] ?>'>
                                     <label for='penalty_amount_<?= $book['BookID'] ?>'>Enter Penalty Amount:</label>
@@ -103,15 +103,14 @@ $result = mysqli_query($con, $selectQuery);
                                     $daysOverdue = ceil((time() - strtotime($book['due_date'])) / (60 * 60 * 24));
                                     $penaltyAmount = max(0, $daysOverdue * 100); // Adjust penalty calculation as needed
                                     ?>
-                                    <input type='number' name='penalty_amount' id='penalty_amount_<?= $book['BookID'] ?>'
-                                        value="<?= $penaltyAmount ?>" required readonly>
+                                    <input type='number' name='penalty_amount' id='penalty_amount_<?= $book['BookID'] ?>' value="<?= $penaltyAmount ?>" required readonly>
                                     <p>Penalty for
                                         <?= $daysOverdue ?> days overdue: PHP
                                         <?= $penaltyAmount ?>
                                     </p>
                                     <button type='button' onclick='payPenalty(<?= $book["BookID"] ?>)'>Pay Penalty</button>
                                 </form>
-                            <?php else: ?>
+                            <?php else : ?>
                                 <form method='post' action='return_book.php'>
                                     <input type='hidden' name='BookID' value='<?= $book['BookID'] ?>'>
                                     <button type='submit' class='return-button' name='return_book'>Return</button>
@@ -124,7 +123,6 @@ $result = mysqli_query($con, $selectQuery);
             </table>
 
             <script>
-
                 function payPenalty(bookId) {
                     console.log("Attempting to pay penalty for book ID: " + bookId);
 
@@ -141,14 +139,14 @@ $result = mysqli_query($con, $selectQuery);
 
                         var xhr = new XMLHttpRequest();
                         xhr.open("POST", "pay_penalty.php", true);
-                        xhr.onreadystatechange = function () {
+                        xhr.onreadystatechange = function() {
                             if (xhr.readyState == 4) {
                                 if (xhr.status == 200) {
                                     console.log("Response from pay_penalty.php: " + xhr.responseText);
                                     // Add any additional handling based on the response if needed
                                     if (xhr.responseText === "Payment successful") {
                                         alert("Your payment has been successfully processed. Thank you for your prompt settlement.");
-                                         location.reload();
+                                        location.reload();
                                     } else {
                                         alert(xhr.responseText); // Show an alert with the error message
                                     }

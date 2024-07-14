@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>The Book Haven</title>
+    <title>Rai's Book Shop</title>
     <link rel="stylesheet" href="css/stylemain.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/bookpage.css">
@@ -98,11 +98,11 @@
                                         </span>
                                         <?php echo "<input type='hidden' name='Quantity' value='$Quantity' >" ?>
                                     </div>
-                                   <?php
-if ($Forsale != 0) {
-    $initialQuantityValue =1; 
-    $escapedBookID = htmlspecialchars($BookID, ENT_QUOTES, 'UTF-8');
-    echo "
+                                    <?php
+                                    if ($Forsale != 0) {
+                                        $initialQuantityValue = 1;
+                                        $escapedBookID = htmlspecialchars($BookID, ENT_QUOTES, 'UTF-8');
+                                        echo "
     <div class='div-18'>
         <div class='div-19'>
             <div class='div-20'>Quantity</div>
@@ -122,8 +122,8 @@ if ($Forsale != 0) {
             <div class='div-29'>Buy now</div>
         </div>
     </div>";
-} else {
-    echo "
+                                    } else {
+                                        echo "
     <div class='div-15'>
         <span class='span1'>Borrow Period:</span>
         <span class='span2'>3 days</span>
@@ -132,21 +132,21 @@ if ($Forsale != 0) {
         <img loading='lazy' src='Image/save.png' class='img-3' />
         <input type='submit' style='all:unset' class='div-29' value='Borrow Now'>
     </div>";
-}
-?>
+                                    }
+                                    ?>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var initialQuantityValue = document.getElementById('quantityInput').value;
-        updateInputQuantity(initialQuantityValue);
-    });
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            var initialQuantityValue = document.getElementById('quantityInput').value;
+                                            updateInputQuantity(initialQuantityValue);
+                                        });
 
-    function updateInputQuantity(value) {
-        var formattedValue = encodeURIComponent(value);
-        var buyNowButton = document.querySelector('.div-28');
-        buyNowButton.setAttribute('onclick', 'submitForm(\'purchaseItems2.php?selectedItems=' + '<?= $escapedBookID ?>' + '&Quantity=' + formattedValue + '&Price=' + <?= $Price ?> + '\')');
-    }
-</script>
+                                        function updateInputQuantity(value) {
+                                            var formattedValue = encodeURIComponent(value);
+                                            var buyNowButton = document.querySelector('.div-28');
+                                            buyNowButton.setAttribute('onclick', 'submitForm(\'purchaseItems2.php?selectedItems=' + '<?= $escapedBookID ?>' + '&Quantity=' + formattedValue + '&Price=' + <?= $Price ?> + '\')');
+                                        }
+                                    </script>
 
 
 
@@ -199,12 +199,12 @@ if ($Forsale != 0) {
 
             if (newPassword !== confirmPassword) {
                 alert("New Password and Confirm Password must match!");
-                passwordInputs.forEach(function (element) {
+                passwordInputs.forEach(function(element) {
                     element.classList.add('password-mismatch');
                 });
                 return false; // prevent form submission
             } else {
-                passwordInputs.forEach(function (element) {
+                passwordInputs.forEach(function(element) {
                     element.classList.remove('password-mismatch');
                 });
             }
@@ -216,14 +216,14 @@ if ($Forsale != 0) {
             document.getElementById('SettingsPopup').style.display = 'none';
             var overlay = document.querySelector('.popup-overlay');
             overlay.style.opacity = 0;
-            setTimeout(function () {
+            setTimeout(function() {
                 overlay.style.display = 'none';
             }, 300);
         }
 
         function showSettingsPopup() {
             document.getElementById("SettingsPopup").style.display = "block";
-            setTimeout(function () {
+            setTimeout(function() {
                 document.getElementById("spopup-overlay").style.display = "block";
             }, 10);
         }
@@ -232,14 +232,14 @@ if ($Forsale != 0) {
             document.getElementById("spopup-overlay").style.display = "none";
             document.getElementById("SettingsPopup").style.display = "none";
         }
-        document.getElementById('img').addEventListener('change', function (event) {
+        document.getElementById('img').addEventListener('change', function(event) {
             const fileInput = event.target;
             const profileImage = document.getElementById('profileImage');
 
             const file = fileInput.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     profileImage.src = e.target.result;
                 };
                 reader.readAsDataURL(file);

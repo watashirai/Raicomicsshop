@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>The Book Haven</title>
+    <title>Rai's Book Shop</title>
     <link rel="stylesheet" href="css/stylemain.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="icon" href="Image/logo.ico">
@@ -23,12 +23,12 @@
 
 
 <body>
-    <header >
+    <header>
         <a href="admin.php" class="ahead">
-        <img src="Image\left-arrow.png" width="22">
+            <img src="Image\left-arrow.png" width="22">
             <h4>Go Back</h4>
         </a>
-     </header>
+    </header>
     <section></a>
         <div class="wrapper" id="w1">
             <form action="" method="post" enctype="multipart/form-data">
@@ -109,14 +109,14 @@
             document.getElementById('SettingsPopup').style.display = 'none';
             var overlay = document.querySelector('.popup-overlay');
             overlay.style.opacity = 0;
-            setTimeout(function () {
+            setTimeout(function() {
                 overlay.style.display = 'none';
             }, 300);
         }
 
         function showSettingsPopup() {
             document.getElementById("SettingsPopup").style.display = "block";
-            setTimeout(function () {
+            setTimeout(function() {
                 document.getElementById("spopup-overlay").style.display = "block";
             }, 10);
         }
@@ -125,14 +125,14 @@
             document.getElementById("spopup-overlay").style.display = "none";
             document.getElementById("SettingsPopup").style.display = "none";
         }
-        document.getElementById('img').addEventListener('change', function (event) {
+        document.getElementById('img').addEventListener('change', function(event) {
             const fileInput = event.target;
             const profileImage = document.getElementById('profileImage');
 
             const file = fileInput.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     profileImage.src = e.target.result;
                 };
                 reader.readAsDataURL(file);

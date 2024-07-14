@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/header.css">
     <title>Order Success</title>
     <style>
-    
         #img {
             max-width: 300px;
             height: auto;
@@ -34,12 +33,12 @@
 </head>
 
 <body>
-     <header >
+    <header>
         <a href="admin.php" class="ahead">
-        <img src="Image\left-arrow.png" width="22">
+            <img src="Image\left-arrow.png" width="22">
             <h4>Go Back</h4>
         </a>
-     </header>
+    </header>
     <?php
     include 'connect.php';
     session_start();
@@ -56,7 +55,7 @@
             $bookTitle = $row['Title'];
         }
 
-        $confirmationMessage = "Thank you for Buying!<br>$bookTitle<br>Price: $totalPurchaseValue.00<br><br>Happy reading!<br>Thank you for choosing Book Haven..";
+        $confirmationMessage = "Thank you for Buying!<br>$bookTitle<br>Price: $totalPurchaseValue.00<br><br>Happy reading!<br>Thank you for choosing Rais Book Shop..";
 
         if (!$result) {
             echo "Error retrieving selected items: " . mysqli_error($con);

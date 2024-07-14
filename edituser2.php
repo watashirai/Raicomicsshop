@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>The Book Haven</title>
+    <title>Rai's Book Shop</title>
     <link rel="stylesheet" href="css/stylemain.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="icon" href="Image/logo.ico">
@@ -25,7 +25,7 @@ $phone = $rowUser["phone"];
     <section>
         <div class="wrapper" id="w1">
             <form action="" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="UserID" value="<?php echo "$UserID";?>";>
+                <input type="hidden" name="UserID" value="<?php echo "$UserID"; ?>" ;>
                 <div class="wedit">
                     <div class="weditimg">
                         <?php
@@ -100,14 +100,14 @@ $phone = $rowUser["phone"];
         </div>
     </section>
     <script>
-        document.getElementById('img').addEventListener('change', function (event) {
+        document.getElementById('img').addEventListener('change', function(event) {
             const fileInput = event.target;
             const profileImage = document.getElementById('profileImage');
 
             const file = fileInput.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     profileImage.src = e.target.result;
                 };
                 reader.readAsDataURL(file);

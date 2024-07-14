@@ -24,7 +24,7 @@ try {
     $mail->Port       = 465;
 
     // Recipients
-    $mail->setFrom("$email", 'The Book Haven');
+    $mail->setFrom("$email", 'Rais Book Shop');
     $mail->addAddress("$email", '');
 
     // Generate a unique verification code 
@@ -36,8 +36,8 @@ try {
 
     // Set the email content
     $mail->isHTML(true);
-    $mail->Subject = 'Confirm Your Book Haven Journey - Unlock the Magic!';
-    $mail->Body    = "Thank you for creating an account with Book Haven! To ensure the security of your account, please verify your email address by clicking on the following link: <br> <b><a href='$verificationLink'>Verification Link</a></b> <br><br> If you did not create an account with Book Haven, please ignore this email.<br><br>Thank you for choosing Book Haven.";
+    $mail->Subject = 'Confirm Your Rais Book Shop Journey - Unlock the Magic!';
+    $mail->Body    = "Thank you for creating an account with Rais Book Shop! To ensure the security of your account, please verify your email address by clicking on the following link: <br> <b><a href='$verificationLink'>Verification Link</a></b> <br><br> If you did not create an account with Rais Book Shop, please ignore this email.<br><br>Thank you for choosing Rais Book Shop.";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     // Send the email

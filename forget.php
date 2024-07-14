@@ -27,7 +27,7 @@ if ($result->num_rows > 0) { // Fix: use > 0 instead of > 1
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
 
-        $mail->setFrom("$resetemail", 'The Book Haven');
+        $mail->setFrom("$resetemail", 'Rais Book Shop');
         $mail->addAddress("$resetemail", '');
 
         $reset_link = "http://localhost/Raicomicsshop/resetpassword.php?email=$resetemail";
@@ -44,7 +44,7 @@ if ($result->num_rows > 0) { // Fix: use > 0 instead of > 1
     ';
         // Set the email content
         $mail->isHTML(true);
-        $mail->Subject = 'Important: Reset Your BOOK HAVEN Library Account Password Now!';
+        $mail->Subject = 'Important: Reset Your Rais Book Shop Library Account Password Now!';
         $mail->Body    = $message;
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 

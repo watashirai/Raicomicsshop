@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/header.css">
     <title>Order Success</title>
     <style>
-    
         #img {
             max-width: 300px;
             height: auto;
@@ -52,7 +51,7 @@
             $bookTitle = $row['Title'];
         }
 
-        $confirmationMessage = "Thank you for Buying!<br>$bookTitle<br>Price: $totalPurchaseValue.00<br><br>Happy reading!<br>Thank you for choosing Book Haven..";
+        $confirmationMessage = "Thank you for Buying!<br>$bookTitle<br>Price: $totalPurchaseValue.00<br><br>Happy reading!<br>Thank you for choosing Rais Book Shop..";
 
         if (!$result) {
             echo "Error retrieving selected items: " . mysqli_error($con);

@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdf->SetAutoPageBreak(true, 10);
     $pdf->AddPage();
     $pdf->SetFont('helvetica', '', 16);
-    $pdf->Cell(0, 15, 'The Book Haven', 0, 1, 'C');
+    $pdf->Cell(0, 15, 'Rais Book Shop', 0, 1, 'C');
 
     $reportQuery = "";
 
@@ -34,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         orders o ON b.BookID = o.product_id
     GROUP BY
         g.BookGenre";
-
     } elseif ($reportType == 'product_inventory') {
         $reportQuery = "SELECT b.BookID, b.Title, b.quantity AS available_stocks, SUM(b.quantity) OVER () AS total_stocks FROM books b";
     } elseif ($reportType == 'registered_customers') {
@@ -73,11 +72,11 @@ ob_end_flush();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Haven Sales Report</title>
+    <title>Rais Book Shop Sales Report</title>
     <link rel="stylesheet" href="css/printreport.css">
     <link rel="icon" href="Image/logo.ico">
     <style>
-        
+
     </style>
 </head>
 

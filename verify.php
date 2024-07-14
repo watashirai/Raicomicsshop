@@ -13,7 +13,7 @@ if (!empty($verificationCode)) {
 
     // Execute the update query
     if ($stmt->execute()) {
-        echo '<script>alert("Your email has been successfully verified.\n\nWelcome to the Book Haven community!\nHappy reading!\n\nThank you for choosing Book Haven.");</script>';
+        echo '<script>alert("Your email has been successfully verified.\n\nWelcome to Rais Book Shop community!\nHappy reading!\n\nThank you for choosing Rais Book Shop.");</script>';
         echo '<script>window.location.href = "landingpage.php";</script>';
     } else {
         echo "Error updating record: " . $stmt->error;

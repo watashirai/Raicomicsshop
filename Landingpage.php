@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>The Book Haven</title>
+    <title>Rai's Book Shop</title>
     <link rel="stylesheet" href="css/stylemain.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/pageno.css">
@@ -94,7 +94,7 @@
 
 
         <ul class="copyright">
-            <li><a href="Landingpage.html">THE BOOK HAVEN </a></li>
+            <li><a href="Landingpage.html">Rai's Book Shop </a></li>
             <li>© 2023. ALL RIGHTS RESERVED.</li>
         </ul>
         <ul class="copyright">
