@@ -14,5 +14,5 @@
         <a onclick='showSettingsPopup()' class="a" href="#settings">Settings</a>
     </div>
     <?php include 'apopups.php'; ?>
-    <a class="a" id="logout" href="logout.php">Log out</a>
+    <a class="a" id="logout" href="logut.php">Log out</a>
 </header>
