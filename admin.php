@@ -168,7 +168,7 @@ echo "<style>
                 <div class="your-events">
                     <div class="headertitle">
                         <img src="css/img/time.png" style="width: 30px;">
-                        <p class="count"><?= $eventcount ?></p>
+                        <!-- <p class="count"><?= $eventcount ?></p> -->
                         <p class="HeaderName">Pending Request</p>
                     </div>
                     <div class="iventdom">
@@ -204,10 +204,7 @@ echo "<style>
                                             $sql2 = "SELECT * FROM users WHERE UserID = '$requestid'";
                                             $row2 = mysqli_query($con, $sql2);
                                             $requestusernames = mysqli_fetch_assoc($row2)['username'];
-
-
                                             echo " <span class='usericon'>$requestusernames</span>";
-
                                             ?>
                                         </p>
                                     </div>

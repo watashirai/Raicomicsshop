@@ -156,31 +156,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="div-30">
-                        <div class="div-30">
-                            <div class="div-5">
-                                <div class="div-6">Related Books</div>
-                                <div class="div-7">
-                                    <div class="div-8"></div>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="div-31">
-                                <div class="column-3">
-                                    <div class="div-32">
-                                        <div class="div-33">
-                                            <img loading="lazy" src="upload\books\book2.jpg" class="img-5" />
-                                        </div>
-                                        <div class="div-34">Macmillan Graded Readers: Upper Intermediate: Macbeth</div>
-                                        <div class="div-35">William Shakespeare</div>
-                                        <div class="div-36">
-                                            <div class="div-66">PHP 1500.00</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </form>
