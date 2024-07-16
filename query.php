@@ -28,6 +28,15 @@ if ($username != 0) {
     $query70 = mysqli_query($con, "SELECT COUNT(id) AS count from borrow WHERE customer_name = '$FName $LName' and returned !=1");
     $row70 = mysqli_fetch_assoc($query70);
     $borrowcount = $row70["count"];
+    if ($username != "admin") {
+        $query69 = mysqli_query($con, "SELECT COUNT(id) AS count from borrow WHERE customer_id = $UserID");
+        $row69 = mysqli_fetch_assoc($query69);
+        $eventcount = $row69["count"];
+    } else {
+        $query69 = mysqli_query($con, "SELECT COUNT(id) AS count from borrow");
+        $row69 = mysqli_fetch_assoc($query69);
+        $eventcount = $row69["count"];
+    }
 } else {
     $verification = '0';
     $block = '0';
@@ -35,6 +44,7 @@ if ($username != 0) {
 $queryProfile = mysqli_query($con, "SELECT profile FROM currentuser WHERE username = '$username'");
 $rowProfile = mysqli_fetch_assoc($queryProfile);
 $location = $rowProfile["profile"];
+
 
 $queryPage = mysqli_query($con, "SELECT * FROM page WHERE ItemID IN (1, 2, 3, 4, 5)");
 while ($rowPage = mysqli_fetch_assoc($queryPage)) {
@@ -71,13 +81,3 @@ $aLName = $rowUser2["LName"];
 $aemail = $rowUser2["email"];
 $aaddress = $rowUser2['address'];
 $aphone = $rowUser2['phone'];
-
-if ($username != "admin") {
-    $query69 = mysqli_query($con, "SELECT COUNT(id) AS count from borrow WHERE customer_id = $UserID");
-    $row69 = mysqli_fetch_assoc($query69);
-    $eventcount = $row69["count"];
-} else {
-    $query69 = mysqli_query($con, "SELECT COUNT(id) AS count from borrow");
-    $row69 = mysqli_fetch_assoc($query69);
-    $eventcount = $row69["count"];
-}
