@@ -159,7 +159,7 @@ echo "<style>
         <section id="myevent" style="padding-top: 50px;">
             <?php
             if (isset($UserID)) {
-                $getEventQuery = "SELECT borrow.id , borrow.customer_name , borrow.returned, books.BookID ,books.Title, books.Author
+                $getEventQuery = "SELECT borrow.id , borrow.customer_name , borrow.returned, books.BookID, books.Title, books.BookImage, books.Author
                       FROM borrow
                       INNER JOIN books ON book_id  = books.BookID 
                        ORDER BY books.BookID ASC";
@@ -167,7 +167,6 @@ echo "<style>
             ?>
                 <div class="your-events">
                     <div class="headertitle">
-                        <img src="css/img/time.png" style="width: 30px;">
                         <p class="count"><?= $eventcount ?></p>
                         <p class="HeaderName">Request</p>
                     </div>
@@ -177,7 +176,6 @@ echo "<style>
                         ?>
                             <div class="perevent">
                                 <div class="eventdate">
-                                    <img src="css/img/time.png" style="width: 25px;">
                                     <?php
                                     if ($row['returned'] == 0) { ?>
                                         <a href="updat_status.php?returned=1&eventid=<?= $row['id']; ?>" class="Approve">Approve</a>
@@ -192,7 +190,7 @@ echo "<style>
                                         <h1 class="eventh1"><?= $row['Title'] ?></h1>
                                     </div>
                                     <div class="row2">
-                                        <img src="css/img/pin.png" style="width: 15px;">
+                                        <img src="<?= $row['BookImage'] ?>" style="width: 150px;">
                                     </div>
                                     <div class="row3">
                                         <p class="description"><?= $row['Author'] ?></p>
