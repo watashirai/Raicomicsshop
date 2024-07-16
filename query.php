@@ -71,7 +71,12 @@ $aLName = $rowUser2["LName"];
 $aemail = $rowUser2["email"];
 $aaddress = $rowUser2['address'];
 $aphone = $rowUser2['phone'];
-if ($username == "admin") {
+
+if ($username != "admin") {
+    $query69 = mysqli_query($con, "SELECT COUNT(id) AS count from borrow WHERE customer_id = $UserID");
+    $row69 = mysqli_fetch_assoc($query69);
+    $eventcount = $row69["count"];
+} else {
     $query69 = mysqli_query($con, "SELECT COUNT(id) AS count from borrow");
     $row69 = mysqli_fetch_assoc($query69);
     $eventcount = $row69["count"];

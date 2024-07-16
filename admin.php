@@ -168,8 +168,8 @@ echo "<style>
                 <div class="your-events">
                     <div class="headertitle">
                         <img src="css/img/time.png" style="width: 30px;">
-                        <!-- <p class="count"><?= $eventcount ?></p> -->
-                        <p class="HeaderName">Pending Request</p>
+                        <p class="count"><?= $eventcount ?></p>
+                        <p class="HeaderName">Request</p>
                     </div>
                     <div class="iventdom">
                         <?php while ($row = mysqli_fetch_assoc($result)) {
