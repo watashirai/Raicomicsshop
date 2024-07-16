@@ -29,7 +29,7 @@ if ($username != 0) {
     $row70 = mysqli_fetch_assoc($query70);
     $borrowcount = $row70["count"];
     if ($username != "admin") {
-        $query69 = mysqli_query($con, "SELECT COUNT(id) AS count from borrow WHERE customer_id = $UserID");
+        $query69 = mysqli_query($con, "SELECT COUNT(id) AS count from borrow WHERE id = $UserID");
         $row69 = mysqli_fetch_assoc($query69);
         $eventcount = $row69["count"];
     } else {
