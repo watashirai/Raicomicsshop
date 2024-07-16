@@ -87,9 +87,9 @@
     <footer id="footer">
         <h5 style="color: rgba(255, 255, 255, 0.574);">FOLLOW OUR SOCIAL MEDIA</h5>
         <ul class="icons">
-            <li><a href="https://www.facebook.com/lance.s02" class="social facebook"></a></li>
-            <li><a href="https://twitter.com/LanceMusngi" class="social twitter"></a></li>
-            <li><a href="https://www.instagram.com/lnc_grysn/" class="social instagram"></a></li>
+            <li><a href="https://web.facebook.com/jamesraille.sitchon" class="social facebook"></a></li>
+            <li><a href="https://x.com" class="social twitter"></a></li>
+            <li><a href="https://www.instagram.com/jaimes_rai/" class="social instagram"></a></li>
         </ul>
 
 
