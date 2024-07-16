@@ -13,7 +13,7 @@
 include("connect.php");
 include("query.php");
 
-$query = "SELECT UserID, FName, LName, username, block FROM users WHERE admin != 1";
+$query = "SELECT UserID, FName, LName, username, block FROM users WHERE UserID != 1";
 
 $result = mysqli_query($con, $query);
 ?>
@@ -38,7 +38,7 @@ $result = mysqli_query($con, $query);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                    <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                         <?php $userId = $row['UserID']; ?>
                         <tr id="user-row-<?= $userId ?>">
                             <td>
@@ -54,15 +54,14 @@ $result = mysqli_query($con, $query);
                                 <?= $row['username'] ?>
                             </td>
                             <td>
-                                <?php if ($row["block"] == 1): ?>
+                                <?php if ($row["block"] == 1) : ?>
                                     <a class="unblock-btn" href="unblock.php?userid=<?= $userId ?>">Unblock</a>
-                                <?php else: ?>
+                                <?php else : ?>
                                     <a class="block-btn" href="block.php?userid=<?= $userId ?>">Block</a>
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <a href="edituser2.php?UserID=<?= $userId ?>"><button class="edit"
-                                        type="submit">Edit</button></a>
+                                <a href="edituser2.php?UserID=<?= $userId ?>"><button class="edit" type="submit">Edit</button></a>
                             </td>
                             <td style="min-width: 86px;">
                                 <input type="checkbox" class="delete-checkbox" data-userid="<?= $userId ?>">
@@ -82,7 +81,7 @@ $result = mysqli_query($con, $query);
     <script>
         function handleBlockUnblock(userId, action) {
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+            xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var rowId = "user-row-" + userId;
                     document.getElementById(rowId).innerHTML = this.responseText;
@@ -98,7 +97,7 @@ $result = mysqli_query($con, $query);
 
         function deleteSelectedRows() {
             var selectedCheckboxes = document.querySelectorAll('.delete-checkbox:checked');
-            var selectedUserIds = Array.from(selectedCheckboxes).map(function (checkbox) {
+            var selectedUserIds = Array.from(selectedCheckboxes).map(function(checkbox) {
                 return checkbox.getAttribute('data-userid');
             });
 
@@ -106,7 +105,7 @@ $result = mysqli_query($con, $query);
                 var confirmed = confirm("Are you sure you want to delete the selected users?");
                 if (confirmed) {
                     var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function () {
+                    xhttp.onreadystatechange = function() {
                         if (this.readyState == 4) {
                             if (this.status == 200) {
                                 location.reload();

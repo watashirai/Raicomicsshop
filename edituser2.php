@@ -81,10 +81,13 @@ $phone = $rowUser["phone"];
                                 ?>
 
                             </div>
-                            <div class="weitem" style="opacity: 0;">
+                            <div class="weitem">
                                 <div class="border">
-                                    <p>Username:</p>
-                                    <input type="text" name="username" value="">
+                                    <p>Role:</p>
+                                    <select name="role">
+                                        <option value="0">User</option>
+                                        <option value="1">Admin</option>
+                                    </select>
                                 </div>
                             </div>
                             <label class="btn-save">

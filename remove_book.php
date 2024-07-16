@@ -6,11 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_book'])) {
     $book_id = $_POST['BookID'];
     $customer_name = "$FName $LName";
 
-    $ownershipQuery = "SELECT customer_name FROM borrow WHERE book_id = $book_id AND customer_name = '$customer_name'";
+    $ownershipQuery = "SELECT customer_name FROM borrow WHERE book_id = $book_id AND customer_name = '$UserID'";
     $ownershipResult = mysqli_query($con, $ownershipQuery);
 
     if ($ownershipResult && mysqli_num_rows($ownershipResult) > 0) {
-        $removeQuery = "DELETE FROM borrow WHERE book_id = $book_id AND customer_name = '$customer_name'";
+        $removeQuery = "DELETE FROM borrow WHERE book_id = $book_id AND customer_name = '$UserID'";
         $removeResult = mysqli_query($con, $removeQuery);
 
         if ($removeResult) {
@@ -22,4 +22,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_book'])) {
         echo "Error: The book is not currently borrowed by $customer_name.";
     }
 }
-?>

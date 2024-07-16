@@ -5,7 +5,7 @@ include("query.php");
 $selectQuery = "SELECT books.*, borrow.borrow_date, borrow.due_date, borrow.returned, borrow.penalty_paid
                 FROM books
                 JOIN borrow ON books.BookID = borrow.book_id
-                WHERE borrow.customer_name = '$FName $LName'
+                WHERE borrow.customer_name = '$UserID'
                 ORDER BY borrow.returned ASC";
 $result = mysqli_query($con, $selectQuery);
 ?>
@@ -74,7 +74,7 @@ $result = mysqli_query($con, $selectQuery);
                     <th>Action</th>
                 </tr>
                 <?php while ($book = mysqli_fetch_assoc($result)) : ?>
-                    <tr id='book_row_<?= $book['BookID'] ?>' class='<?= $book['returned'] ? 'returned-book' : '' ?>'>
+                    <tr id='book_row_<?= $book['BookID'] ?>' class='<?= $book['returned'] == 2 ? 'returned-book' : '' ?>'>
                         <td>
                             <?= $book['BookID'] ?>
                         </td>
@@ -89,19 +89,21 @@ $result = mysqli_query($con, $selectQuery);
                             <?= $book['due_date'] ?>
                         </td>
                         <td style="max-width: 40px;">
-                            <?php if ($book['returned'] == 1) : ?>
+                            <?php if ($book['returned'] == 2) : ?>
                                 Returned
                                 <form method='post' action='remove_book.php' style="margin-top: 5px;">
                                     <input type='hidden' name='BookID' value='<?= $book['BookID'] ?>'>
                                     <button type='submit' class='remove-button' name='remove_book'>Remove</button>
                                 </form>
+                            <?php elseif ($book['returned'] == 0) : ?>
+                                <p>Pending borrow.</p>
                             <?php elseif (strtotime($book['due_date']) < time()) : ?>
                                 <form class='penalty-form' id='payForm_<?= $book['BookID'] ?>'>
                                     <input type='hidden' name='BookID' value='<?= $book['BookID'] ?>'>
                                     <label for='penalty_amount_<?= $book['BookID'] ?>'>Enter Penalty Amount:</label>
                                     <?php
                                     $daysOverdue = ceil((time() - strtotime($book['due_date'])) / (60 * 60 * 24));
-                                    $penaltyAmount = max(0, $daysOverdue * 100); // Adjust penalty calculation as needed
+                                    $penaltyAmount = max(0, $daysOverdue * 100);
                                     ?>
                                     <input type='number' name='penalty_amount' id='penalty_amount_<?= $book['BookID'] ?>' value="<?= $penaltyAmount ?>" required readonly>
                                     <p>Penalty for
@@ -143,7 +145,6 @@ $result = mysqli_query($con, $selectQuery);
                             if (xhr.readyState == 4) {
                                 if (xhr.status == 200) {
                                     console.log("Response from pay_penalty.php: " + xhr.responseText);
-                                    // Add any additional handling based on the response if needed
                                     if (xhr.responseText === "Payment successful") {
                                         alert("Your payment has been successfully processed. Thank you for your prompt settlement.");
                                         location.reload();

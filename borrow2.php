@@ -29,7 +29,7 @@
         $borrowPeriod = 3;
         if ($availableCopies > 0) {
             $dueDate = date("Y-m-d", strtotime("+$borrowPeriod days"));
-            $sql = "INSERT INTO borrow (book_id, customer_name, borrow_date, due_date) VALUES ((SELECT BookID FROM books WHERE title = '$bookTitle' AND author = '$author' LIMIT 1),'$FName $LName', CURDATE(), DATE_ADD(CURDATE(), INTERVAL $borrowPeriod DAY))";
+            $sql = "INSERT INTO borrow (book_id, customer_name, borrow_date, due_date) VALUES ((SELECT BookID FROM books WHERE title = '$bookTitle' AND author = '$author' LIMIT 1),'$UserID', CURDATE(), DATE_ADD(CURDATE(), INTERVAL $borrowPeriod DAY))";
             $sql3 = "UPDATE books SET Quantity = Quantity - 1, Solds = Solds + 1 WHERE title = '$bookTitle'";
             if ($con->query($sql) === TRUE && $con->query($sql3) === TRUE) {
                 $confirmationMessage = "Thank you for borrowing!<br>Book: $bookTitle<br>Due Date: $dueDate<br>Please return on time.";

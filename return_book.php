@@ -7,8 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book']) && iss
     // Get the book_id from the form data
     $book_id = $_POST['BookID'];
 
-    $returnBookQuery = "UPDATE borrow SET returned = 1 WHERE book_id = $book_id AND customer_name = '$FName $LName'";
-    
+    $returnBookQuery = "UPDATE borrow SET returned = 2 WHERE book_id = $book_id AND customer_name = '$UserID'";
+
     $returnBookResult = mysqli_query($con, $returnBookQuery);
 
 
@@ -18,11 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book']) && iss
         $updateQuantityResult = mysqli_query($con, $updateQuantityQuery);
 
         if ($updateQuantityResult) {
-            // Redirect back to the borrowed books page with a success message
-            header("Location: display_borrowed.php?returned=1");
+            echo '<script>alert("Your payment has been successfully processed. Thank you for your prompt settlement.");
+            window.location.href = "display_borrowed.php?returned=1";</script>';
             exit();
         } else {
-            echo '<script>alert("Error updating book quantity: ' . mysqli_error($conn) . '");</script>';
+            echo '<script>alert("Error updating book quantity: ' . mysqli_error($conn) . '");</>';
         }
     } else {
         echo '<script>alert("Error returning book: ' . mysqli_error($con) . '");</script>';
@@ -30,4 +30,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book']) && iss
 } else {
     echo '<script>alert("Invalid request.");</script>';
 }
-?>

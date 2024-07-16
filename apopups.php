@@ -6,9 +6,9 @@
         <div class="sdiv">
             <form action="" class="settings" method="post" enctype="multipart/form-data">
                 <?php
-                echo "<div class='profileimg'><p><img  src='$alocation' width='200 height='200'></p><br><br>";
-                echo "<p class='name'><b>" . $aFName . " " . $aLName . "</b></p>";
-                echo "<p class='emaillink'>" . $aemail . "</p></div>";
+                echo "<div class='profileimg'><p><img  src='$location' width='200 height='200'></p><br><br>";
+                echo "<p class='name'><b>" . $FName . " " . $LName . "</b></p>";
+                echo "<p class='emaillink'>" . $email . "</p></div>";
                 ?>
                 <div class="ssbuttons">
                     <a href="aedituser.php">

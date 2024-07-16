@@ -17,7 +17,7 @@
     include("header.php");
     include("popups.php");
     $BookID = $_POST['BookID'];
-    $checkBorrowedQuery = "SELECT COUNT(*) AS num_borrowed FROM borrow WHERE customer_name = '$FName $LName' AND book_id = $BookID AND returned = 0";
+    $checkBorrowedQuery = "SELECT COUNT(*) AS num_borrowed FROM borrow WHERE customer_name = '$UserID' AND book_id = $BookID AND returned = 0";
     $checkBorrowedResult = mysqli_query($con, $checkBorrowedQuery);
     $numBorrowed = mysqli_fetch_assoc($checkBorrowedResult)['num_borrowed'];
     if ($numBorrowed == 0) {
@@ -54,7 +54,6 @@
                     echo "<script>alert('This book has no available stock')</script>";
                     echo "<script>window.history.back();</script>";
                 }
-
             } else {
                 echo '<script>alert("You have reached the maximum limit of borrowed books \n(Maximum of 3)")</script>';
                 echo '<script>window.location.href = "display_borrowed.php";</script>';

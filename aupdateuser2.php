@@ -7,6 +7,7 @@ $last_name = $_POST['last_name'];
 $address = $_POST['address'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
+$role = $_POST['role'];
 
 if (isset($_POST["submit"])) {
     // Check if the file input is set and has data
@@ -32,10 +33,10 @@ if (isset($_POST["submit"])) {
         $targetLName = $row['LName'];
 
         // Update the user profile
-        $queryUpdateUsers = mysqli_query($con, "UPDATE users SET profile = '$location', FName = '$first_name', LName = '$last_name', email = '$email', address ='$address', phone = '$phone' WHERE UserID = '$targetUserId'");
+        $queryUpdateUsers = mysqli_query($con, "UPDATE users SET profile = '$location', FName = '$first_name', LName = '$last_name', email = '$email', address ='$address', phone = '$phone', admin = '$role' WHERE UserID = '$targetUserId'");
 
         if ($queryUpdateUsers) {
-            echo '<script>alert("Profile updated successfully for User: ' . $targetFName . ' ' . $targetLName . '");</script>';
+            echo '<script>alert("' . $queryUpdateUsersProfile .' updated successfully for User: ' . $targetFName . ' ' . $targetLName . '");</script>';
             echo '<script>window.location.href = "blockuser.php";</script>';
         } else {
             echo '<script>alert("Error updating profile. Please try again later.");</script>';
@@ -47,4 +48,3 @@ if (isset($_POST["submit"])) {
     echo '<script>alert("Error updating profile. Please try again later.");</script>';
     echo '<script>window.location.href = "edituser.php";</script>';
 }
-?>

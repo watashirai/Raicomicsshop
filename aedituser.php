@@ -35,7 +35,7 @@
                 <div class="wedit">
                     <div class="weditimg">
                         <?php
-                        echo "<img id='profileImage' src='$alocation' alt='Profile Picture'>";
+                        echo "<img id='profileImage' src='$location' alt='Profile Picture'>";
                         ?>
                         <label class="btn-upload-img">
                             Upload Profile Picture <input type="file" id="img" name="img" accept="image/*">
@@ -48,7 +48,7 @@
                                     <p>First Name:</p>
                                 </div>
                                 <?php
-                                echo "<input type='text' name='first_name' value='$aFName'>";
+                                echo "<input type='text' name='first_name' value='$FName'>";
                                 ?>
                             </div>
                             <div class="weitem">
@@ -56,7 +56,7 @@
                                     <p>Last Name:</p>
                                 </div>
                                 <?php
-                                echo "<input type='text' name='last_name' value='$aLName'>";
+                                echo "<input type='text' name='last_name' value='$LName'>";
                                 ?>
                             </div>
                             <div class="weitem">
@@ -64,7 +64,7 @@
                                     <p>Address:</p>
                                 </div>
                                 <?php
-                                echo "<input type='text' name='address' value='$aaddress'>";
+                                echo "<input type='text' name='address' value='$address'>";
                                 ?>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                                     <p>Email:</p>
                                 </div>
                                 <?php
-                                echo "<input type='text' name='email' id='emailInput' value='$aemail' style='text-transform: none;' pattern='.*\.com' title='Please enter a valid email address'>";
+                                echo "<input type='text' name='email' id='emailInput' value='$email' style='text-transform: none;' pattern='.*\.com' title='Please enter a valid email address'>";
                                 ?>
 
                             </div>
@@ -83,7 +83,7 @@
                                     <p>Phone:</p>
                                 </div>
                                 <?php
-                                echo "<input type='tel' name='phone' value='$aphone' pattern='^(\d{11}|\d{12}|\d{13})?$' title='Enter 11 or 13 digits'>";
+                                echo "<input type='tel' name='phone' value='$phone' pattern='^(\d{11}|\d{12}|\d{13})?$' title='Enter 11 or 13 digits'>";
                                 ?>
 
                             </div>

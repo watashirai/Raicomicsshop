@@ -2,14 +2,12 @@
 include 'connect.php';
 include 'query.php';
 
-// Process search input
 if (isset($_GET['search'])) {
     $search = mysqli_real_escape_string($con, $_GET['search']);
     $sql = "SELECT payment_id, order_id, customer_id, payment_date, amount_paid, payment_mode FROM payment 
             WHERE payment_id LIKE '%$search%' OR order_id LIKE '%$search%' OR payment_date LIKE '%$search%' 
             OR amount_paid LIKE '%$search%' OR payment_mode LIKE '%$search%'";
 
-    // Also search for names in the users table
     $sql .= " OR customer_id IN (SELECT UserID FROM users WHERE FName LIKE '%$search%' OR LName LIKE '%$search%')";
 } else {
     // If no search input, retrieve all payment records
